@@ -132,7 +132,7 @@ p {
 
 <script>
 let fps = 100
-let speedFactor = 0.001
+let speedFactor = 0.0005
 let minDelta = 0.5
 let autoScrollSpeed = 10
 let autoScrollTimer, restartTimer
@@ -202,6 +202,24 @@ export default {
       isScrolling: false,
       people: [
         {
+          name: 'Kyle Minshall',
+          bio: 'Hi! My name is Kyle Minshall. I am a second year Computer Science student at the University of California, Riverside. I have been programming for almost eight years across a wide variety of languages including PHP and Symfony, Ruby on Rails, Python, C++, Java, Swift, Objective-C, and JavaScript.',
+          website: 'http://kyleminshall.com/',
+          image: 'kyle.jpg'
+        },
+        {
+          name: 'Brian Crites',
+          bio: 'Graduate student spending most of my time doing research and teaching undergraduates. I do K-12 CS outreach instead of sleeping.',
+          website: 'https://www.linkedin.com/in/brrcrites/',
+          image: 'brian.jpg'
+        },
+        {
+          name: 'Karen Kong',
+          bio: 'My name is Karen Kong and I\'m an undergraduate Computer Science student at the University of California, Riverside. My high school\'s AP Computer Science class ignited my passion for solving challenges and expressing creativity through programming. From then on, my aspirations included earning a degree in computer science and working in the industry. To me, there\'s no greater satisfaction than designing, developing, and debugging a piece of code that is then placed into action in a larger project. In my spare time, you\'ll find me crafting planar graph algorithms and implementing system updates in the research lab and exploring Android application and game development.',
+          website: 'https://kkong006.github.io/',
+          image: 'karen.jpg'
+        },
+        {
           name: 'Aaroh Mankad',
           bio:
             'I love doing Web Development! Particular interests include but are not limited to: React, React Native, GraphQL, Neo4j, etc. Also love contributing to open source projects!',
@@ -209,15 +227,9 @@ export default {
           image: 'aaroh.jpg'
         },
         {
-          name: 'Brian Crites',
-          bio: 'Pretty cool programmer Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus. Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus. ',
-          website: '#',
-          image: 'brian.jpg'
-        },
-        {
           name: 'Daniel Stinson-Diess',
-          bio: 'Security nut crack Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus.  Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus. Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus.',
-          website: '#',
+          bio: 'My name is Daniel Stinson-Diess and I\'m a 2nd year computer science major at UC Riverside. Academically, I\'m interested in the fields of computer security and pure mathematics. I\'m getting started with web and app development hoping to build some awesome projects!',
+          website: 'http://dstindiess.net/',
           image: 'daniel.jpg'
         },
         {
@@ -228,20 +240,32 @@ export default {
         },
         {
           name: 'Maaz Mohamedy',
-          bio: 'Likes to skate around to the kitchen Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus. ',
+          bio: 'ACM Marketing Chair',
           website: '#',
           image: 'maaz.jpg'
         },
         {
           name: 'Neal Goyal',
-          bio: 'Nice guy',
+          bio: 'I am currently a sophomore at the University of California, Riverside. I am majoring in computer science. I am interested in expanding my experience by seeking internships and research opportunities.',
           website: '#',
           image: 'neal.jpg'
         },
         {
+          name: 'Gustavo Correa',
+          bio: 'What’s happening friends! My name is Gustavo Correa and I’m going into my third year at UCR for Computer Engineering.',
+          website: 'https://www.linkedin.com/in/correagustavo/',
+          image: 'gustavo.jpg'
+        },
+        {
+          name: 'Mario Salazar',
+          bio: 'As a United States Marine I have learned, instilled, and developed many leadership traits and principles that will help me throughout my career. The most significant leadership principle that has positively influenced my life is to know myself and seek self improvement. This is a principle that I life by as I strive to continuously improve in all aspects of life.',
+          website: 'https://www.linkedin.com/in/mariozar/',
+          image: 'mario.jpg'
+        },
+        {
           name: 'Sid Sharma',
-          bio: 'Betaaaaaaaa',
-          website: '#',
+          bio: 'Hello, friends!',
+          website: 'http://siddhanthsharma.org/',
           image: 'sid.jpg'
         },
         {
@@ -253,20 +277,26 @@ export default {
         },
         {
           name: 'Zach Zimmerman',
-          bio: 'Whoaaaaaaaa',
-          website: '#',
+          bio: 'Hi everyone! I’m Zach and I’ll be serving as the graduate student advisor for ACM in 2017-2018. I am a computer science PhD student and am going into my third year of the program here under my advisors Dr. Brisk and Dr. Keogh. At UCR, my research focus is on high performance computing and how we can utilize different sources of acceleration (GPUs, FPGAs, TPUs, etc.) to accelerate data mining and machine learning tasks. In particular, I am interested in time series data; examples of this are EEG and seismology readings.',
+          website: 'https://www.linkedin.com/in/zpzim/',
           image: 'zach.jpg'
         },
         {
           name: 'Henry Doan',
           bio: 'Senior with a cool start up',
-          website: '#',
+          website: 'https://www.linkedin.com/in/henry-doan-6b523165/',
           image: 'henry.jpg'
         },
         {
+          name: 'Valerie Chiou',
+          bio: 'Likes Chipotle',
+          website: 'https://www.linkedin.com/in/valerie-chiou/',
+          image: 'valerie.jpg'
+        },
+        {
           name: 'Katie Fukuda',
-          bio: 'Likes to play games',
-          website: '#',
+          bio: 'I have previously worked at Blizzard Entertainment for two summer internship opportunities and became really inspired to work with computers after my experience. Now, I am a sophomore at UC Riverside studying Computer Science, seeking real-world opportunities in the computing field.',
+          website: 'https://www.linkedin.com/in/katie-fukuda/',
           image: 'katie.jpg'
         },
         {

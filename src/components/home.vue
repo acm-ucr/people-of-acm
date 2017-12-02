@@ -33,8 +33,13 @@
   </b-container>
 </template>
 
-<style>
+<style scoped>
 @import url("https://fonts.googleapis.com/css?family=Roboto:900");
+.btn-outline-primary:hover, .btn-outline-primary:not([disabled]):not(.disabled):active, .btn-outline-primary:not([disabled]):not(.disabled).active, .show > .btn-outline-primary.dropdown-toggle {
+  background-color: white;
+  border-color: black;
+  color: black;
+}
 .scroll-toggle {
   position: relative;
   margin-top: 8px;
@@ -126,147 +131,152 @@ p {
 </style>
 
 <script>
-var fps = 100;
-var speedFactor = 0.001;
-var minDelta = 0.5;
-var autoScrollSpeed = 10;
-var autoScrollTimer, restartTimer;
-var isScrolling = false;
-var prevPos = 0,
-  currentPos = 0;
-var currentTime, prevTime, timeDiff;
+let fps = 100
+let speedFactor = 0.001
+let minDelta = 0.5
+let autoScrollSpeed = 10
+let autoScrollTimer, restartTimer
+let isScrolling = false
+let prevPos = 0
+let currentPos = 0
+let currentTime, prevTime, timeDiff
 
-function handleManualScroll(vm) {
-  console.log(vm.isScrolling);
-  vm.isScrolling = !vm.isScrolling;
-  currentPos = window.scrollY || window.pageYOffset;
-  clearInterval(autoScrollTimer);
+function handleManualScroll (vm) {
+  console.log(vm.isScrolling)
+  vm.isScrolling = !vm.isScrolling
+  currentPos = window.scrollY || window.pageYOffset
+  clearInterval(autoScrollTimer)
   if (restartTimer) {
-    clearTimeout(restartTimer);
+    clearTimeout(restartTimer)
   }
   restartTimer = setTimeout(() => {
-    prevTime = null;
-  }, 50);
+    prevTime = null
+  }, 50)
 }
 
-function setAutoScroll(newValue) {
+function setAutoScroll (newValue) {
   if (newValue) {
-    autoScrollSpeed = speedFactor * newValue;
+    autoScrollSpeed = speedFactor * newValue
   }
   if (autoScrollTimer) {
-    clearInterval(autoScrollTimer);
+    clearInterval(autoScrollTimer)
   }
-  autoScrollTimer = setInterval(function() {
-    currentTime = Date.now();
+  autoScrollTimer = setInterval(function () {
+    currentTime = Date.now()
     if (prevTime) {
       if (!isScrolling) {
-        timeDiff = currentTime - prevTime;
-        currentPos += autoScrollSpeed * timeDiff;
+        timeDiff = currentTime - prevTime
+        currentPos += autoScrollSpeed * timeDiff
         if (Math.abs(currentPos - prevPos) >= minDelta) {
-          isScrolling = true;
-          window.scrollTo(0, currentPos);
-          isScrolling = false;
-          prevPos = currentPos;
-          prevTime = currentTime;
+          isScrolling = true
+          window.scrollTo(0, currentPos)
+          isScrolling = false
+          prevPos = currentPos
+          prevTime = currentTime
         }
       }
     } else {
-      prevTime = currentTime;
+      prevTime = currentTime
     }
-  }, 1000 / fps);
+  }, 1000 / fps)
 }
 
 export default {
   methods: {
-    scroll() {
-      window.addEventListener("scroll", function(e) {
-        currentPos = window.scrollY || window.pageYOffset;
-      });
+    scroll () {
+      window.addEventListener('scroll', function (e) {
+        currentPos = window.scrollY || window.pageYOffset
+      })
 
-      console.log(this.isScrolling)
-      window.addEventListener("wheel", handleManualScroll);
-      window.addEventListener("touchmove", handleManualScroll);
+      window.addEventListener('wheel', handleManualScroll)
+      window.addEventListener('touchmove', handleManualScroll)
 
-      setAutoScroll(20);
+      setAutoScroll(20)
     }
   },
-  created() {
-    this.scroll();
+  created () {
+    this.scroll()
   },
-  data: function() {
+  data: function () {
     return {
       isScrolling: false,
       people: [
         {
-          name: "Aaroh Mankad",
+          name: 'Aaroh Mankad',
           bio:
-            "I like going on long walks to my computer. Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus. ",
-          website: "http://aarohmankad.com",
-          image: "aaroh.jpg"
+            'I love doing Web Development! Particular interests include but are not limited to: React, React Native, GraphQL, Neo4j, etc. Also love contributing to open source projects!',
+          website: 'http://aarohmankad.com',
+          image: 'aaroh.jpg'
         },
         {
-          name: "Brian Crites",
-          bio: "Pretty cool programmer Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus. Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus. ",
-          website: "#",
-          image: "brian.jpg"
+          name: 'Brian Crites',
+          bio: 'Pretty cool programmer Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus. Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus. ',
+          website: '#',
+          image: 'brian.jpg'
         },
         {
-          name: "Daniel Stinson-Diess",
-          bio: "Security nut crack Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus.  Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus. Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus.",
-          website: "#",
-          image: "daniel.jpg"
+          name: 'Daniel Stinson-Diess',
+          bio: 'Security nut crack Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus.  Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus. Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus.',
+          website: '#',
+          image: 'daniel.jpg'
         },
         {
-          name: "Henry Doan",
-          bio: "Senior with a cool start up",
-          website: "#",
-          image: "henry.jpg"
+          name: 'Henry Doan',
+          bio: 'Senior with a cool start up',
+          website: '#',
+          image: 'henry.jpg'
         },
         {
-          name: "Maaz Mohamedy",
-          bio: "Likes to skate around to the kitchen Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus. ",
-          website: "#",
-          image: "maaz.jpg"
+          name: 'Maaz Mohamedy',
+          bio: 'Likes to skate around to the kitchen Nulla lacinia, ex sit amet semper euismod, lorem elit condimentum justo, vel fermentum leo mauris at magna. Nunc nunc diam, vestibulum id lobortis eget, finibus vel quam. Proin eget tincidunt risus, ut cursus risus. Ut auctor augue ac metus rhoncus, a semper sem laoreet. Aenean non hendrerit dui, in convallis sapien. In in ex et ex convallis pulvinar nec et magna. Maecenas dui nunc, ornare sed felis non, mattis laoreet purus. ',
+          website: '#',
+          image: 'maaz.jpg'
         },
         {
-          name: "Neal Goyal",
-          bio: "Nice guy",
-          website: "#",
-          image: "neal.jpg"
+          name: 'Neal Goyal',
+          bio: 'Nice guy',
+          website: '#',
+          image: 'neal.jpg'
         },
         {
-          name: "Sid Sharma",
-          bio: "Betaaaaaaaa",
-          website: "#",
-          image: "sid.jpg"
+          name: 'Sid Sharma',
+          bio: 'Betaaaaaaaa',
+          website: '#',
+          image: 'sid.jpg'
         },
         {
-          name: "Patrick Le",
+          name: 'Patrick Le',
           bio:
-            "I enjoy swimming",
-          website: "#",
-          image: "patrick.jpg"
+            'I enjoy swimming',
+          website: '#',
+          image: 'patrick.jpg'
         },
         {
-          name: "Zach Zimmerman",
-          bio: "Whoaaaaaaaa",
-          website: "#",
-          image: "zach.jpg"
+          name: 'Zach Zimmerman',
+          bio: 'Whoaaaaaaaa',
+          website: '#',
+          image: 'zach.jpg'
         },
         {
-          name: "Henry Doan",
-          bio: "Senior with a cool start up",
-          website: "#",
-          image: "henry.jpg"
+          name: 'Henry Doan',
+          bio: 'Senior with a cool start up',
+          website: '#',
+          image: 'henry.jpg'
         },
         {
-          name: "Katie Fukuda",
-          bio: "Likes to play games",
-          website: "#",
-          image: "katie.jpg"
+          name: 'Katie Fukuda',
+          bio: 'Likes to play games',
+          website: '#',
+          image: 'katie.jpg'
+        },
+        {
+          name: 'Daniel Lui',
+          bio: 'MATLAB > All other languages',
+          website: 'https://github.com/mintypaladin/',
+          image: 'daniel_lui.jpg'
         }
       ]
-    };
+    }
   }
-};
+}
 </script>

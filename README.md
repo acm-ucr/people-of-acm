@@ -1,6 +1,6 @@
-# people-of-acm
+# People of ACM
 
-> A showcase for ACM members
+This web app is used to display all of the members of ACM.
 
 ## Build Setup
 

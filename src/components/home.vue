@@ -163,7 +163,7 @@ p {
     font-size: 0.75em;
     margin: 0 auto;
     display: inline;
-    margin-top: 10px;
+    margin-top: 20px;
   }
   .checkin-desktop {
     display: none;

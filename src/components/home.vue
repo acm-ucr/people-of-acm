@@ -1,14 +1,17 @@
 <template>
   <b-container class="h-100 mt-5">
     <div class="text-center header row">
-      <div class="col-md-1">
+      <div class="col-3">
         <button @click="scroll(isScrolling); isScrolling = !isScrolling" class="scroll-toggle btn btn-sm btn-outline-primary">Turn On Scroll</button>
       </div>
-      <div class="col-md-7">
+      <div class="col-xs-auto">
         <h1>PEOPLE OF ACM</h1>
       </div>
-      <div class="col-md-2 signinlink">
-        <a href="http://acmucr.org/checkin">acmucr.org/checkin</a>
+      <div class="col signinlink">
+        <a href="http://acmucr.org/checkin">
+          <span class="checkin-desktop">acmucr.org/checkin</span>
+          <span class="checkin-mobile">Check In</span>
+          </a>
       </div>
     </div>
     <b-card-group columns>
@@ -53,6 +56,11 @@
 .signinlink a {
   color: black;
 }
+
+.checkin-mobile {
+  display: none;
+}
+
 .header {
   position: fixed;
   top: 0;
@@ -128,6 +136,45 @@ p {
   border-top-right-radius: 0px;
   height: 100%;
 }
+@media screen and (max-device-width: 992px) {
+  h1 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  .header {
+    height: 12%;
+  }
+  .scroll-toggle {
+    background-image: url(../assets/scroll.svg);
+    border: 0;
+    background-repeat: no-repeat;
+    color: transparent;
+    width: 25%;
+    float: left;
+    margin-top: 20px;
+  }
+  .btn-outline-primary:hover, .btn-outline-primary:not([disabled]):not(.disabled):active, .btn-outline-primary:not([disabled]):not(.disabled).active, .show > .btn-outline-primary.dropdown-toggle {
+    background-color: transparent;
+    color: transparent;
+  }
+  .signinlink {
+    font-size: 0.75em;
+    margin: 0 auto;
+    display: inline;
+    margin-top: 20px;
+  }
+  .checkin-desktop {
+    display: none;
+  }
+  .checkin-mobile {
+    display: inline-block;
+    font-weight:  700;
+  }
+
+}
+
 </style>
 
 <script>
